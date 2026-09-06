@@ -3,7 +3,7 @@ import { ArrowRight, Cpu } from 'lucide-react';
 import { FaGithub, FaLinkedin, FaYoutube, FaInstagram } from 'react-icons/fa';
 import heroBg from '../assets/backdrop.jpg'; // Make sure the path and filename match your image
 
-export default function Hero() {
+export default function Hero({ t }) {
   return (
     <section 
       id="home" 
@@ -21,17 +21,16 @@ export default function Hero() {
 
       <div className="relative max-w-4xl mx-auto text-center z-10">
         
-
         <h1 className="text-4xl md:text-6xl font-extrabold text-[#E0E0E0] tracking-tight mb-4">
-          HELLO, I'M <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00E5FF] to-blue-400">DILIP AJANTHA</span>.
+          {t?.heroTitle1 || "HELLO, I'M"} <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00E5FF] to-blue-400">DILIP AJANTHA</span>.
         </h1>
 
         <p className="text-lg md:text-xl text-[#00E5FF] font-semibold tracking-wide uppercase mb-6">
-          FULL-STACK SOFTWARE DEVELOPER.
+          {t?.heroTitle2 || "FULL-STACK SOFTWARE DEVELOPER."}
         </p>
 
         <p className="max-w-2xl mx-auto text-slate-300 text-sm md:text-base mb-10">
-          CREATING MODERN, RESPONSIVE WEB EXPERIENCES.
+          {t?.heroSubtitle || "CREATING MODERN, RESPONSIVE WEB EXPERIENCES."}
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
@@ -39,7 +38,7 @@ export default function Hero() {
             href="#projects" 
             className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#00E5FF] text-[#121212] font-semibold py-3.5 px-8 rounded-xl hover:bg-[#00c4dc] transition-all shadow-lg shadow-cyan-950/30"
           >
-            VIEW MY PROJECTS <ArrowRight className="w-4 h-4" />
+            {t?.viewPortfolio || "VIEW MY PROJECTS"} <ArrowRight className="w-4 h-4" />
           </a>
         </div>
 
