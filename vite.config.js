@@ -7,9 +7,5 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
-  // Remove the 'base' property entirely or set it to '/'
-  base: '/', 
-  server: {
-    port: 3000,
-  },
+  base: '/',
 })

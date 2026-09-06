@@ -10,12 +10,12 @@ export default function Education() {
     {
       degree: 'Bachelor of Information Technology',
       institution: 'University of Colombo, Sri Lanka',
-      year: 'Dec 2019',
+    
     },
     {
       degree: 'Diploma in Computer System Design & Analysis',
-      institution: 'Sri Lanka',
-      year: '2004',
+      institution: 'National Institute of Business Management, Sri Lanka',
+     
     },
   ];
 
@@ -24,6 +24,7 @@ export default function Education() {
     'Decoding DevOps - From Basics to Advanced Projects with AI | Udemy',
     'NodeJS - The Complete Guide (MVC, REST APIs, GraphQL, Deno) | Udemy',
     'Data Visualization with Power BI - Great Learning',
+    'NodeJS Security: JWT, Role-Based Access 2FA (/w React) | Udemy',
   ];
 
   return (
