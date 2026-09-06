@@ -10,12 +10,12 @@ export default function Education() {
     {
       degree: 'Bachelor of Information Technology',
       institution: 'University of Colombo, Sri Lanka',
-    
+       year: '2019',
     },
     {
       degree: 'Diploma in Computer System Design & Analysis',
       institution: 'National Institute of Business Management, Sri Lanka',
-     
+      year: '2004',
     },
   ];
 

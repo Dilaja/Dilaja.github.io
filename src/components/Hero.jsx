@@ -1,35 +1,88 @@
 import React from 'react';
+import { ArrowRight, Cpu } from 'lucide-react';
+import { FaGithub, FaLinkedin, FaYoutube, FaInstagram } from 'react-icons/fa';
+import heroBg from '../assets/backdrop.jpg'; // Make sure the path and filename match your image
 
 export default function Hero() {
   return (
-    <section className="min-h-screen flex items-center justify-center pt-16 bg-gradient-to-b from-slate-900 to-slate-800 px-4">
-      <div className="max-w-4xl mx-auto text-center">
-        <h2 className="text-cyan-400 font-semibold tracking-wide uppercase text-sm mb-3">Full-Stack Software Developer</h2>
-        <h1 className="text-4xl sm:text-6xl font-extrabold text-white tracking-tight mb-6">
-          Hi, I'm <span className="text-cyan-400">Dilip Ajantha</span>
+    <section 
+      id="home" 
+      className="relative min-h-screen flex items-center justify-center pt-20 pb-16 px-4 overflow-hidden bg-cover bg-center bg-no-repeat"
+      style={{ backgroundImage: `url(${heroBg})` }}
+    >
+      
+      {/* Dark Overlay to ensure text readability over the image */}
+      <div className="absolute inset-0 bg-[#121212]/80 backdrop-blur-[2px] z-0"></div>
+
+      {/* Optional colorful glowing accent elements on top of the image */}
+      <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-gradient-to-r from-cyan-500/20 via-purple-600/20 to-transparent blur-[120px] rounded-full"></div>
+      </div>
+
+      <div className="relative max-w-4xl mx-auto text-center z-10">
+        
+
+        <h1 className="text-4xl md:text-6xl font-extrabold text-[#E0E0E0] tracking-tight mb-4">
+          HELLO, I'M <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00E5FF] to-blue-400">DILIP AJANTHA</span>.
         </h1>
-        <p className="text-lg sm:text-xl text-slate-300 mb-8 max-w-2xl mx-auto">
-          Results-driven software engineer with extensive experience in modernizing mission-critical national infrastructure, building high-uptime web platforms, and implementing robust MERN solutions.
+
+        <p className="text-lg md:text-xl text-[#00E5FF] font-semibold tracking-wide uppercase mb-6">
+          FULL-STACK SOFTWARE DEVELOPER.
         </p>
-        <div className="flex flex-col sm:flex-row justify-center gap-4">
-          <a
-            href="#projects"
-            className="inline-flex justify-center items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-slate-900 bg-cyan-400 hover:bg-cyan-500 transition-colors shadow-lg"
+
+        <p className="max-w-2xl mx-auto text-slate-300 text-sm md:text-base mb-10">
+          CREATING MODERN, RESPONSIVE WEB EXPERIENCES.
+        </p>
+
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
+          <a 
+            href="#projects" 
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#00E5FF] text-[#121212] font-semibold py-3.5 px-8 rounded-xl hover:bg-[#00c4dc] transition-all shadow-lg shadow-cyan-950/30"
           >
-            View Projects
-          </a>
-          <a
-            href="#contact"
-            className="inline-flex justify-center items-center px-6 py-3 border border-slate-700 text-base font-medium rounded-md text-slate-200 bg-slate-800 hover:bg-slate-700 transition-colors"
-          >
-            Contact Me
+            VIEW MY PROJECTS <ArrowRight className="w-4 h-4" />
           </a>
         </div>
-        <div className="mt-12 text-slate-400 text-sm flex flex-wrap justify-center gap-6">
-          <span>📍 Jyväskylä, Finland</span>
-          <span>📞 +358 41 722 2602</span>
-          <span>✉️ dilipajantha@gmail.com</span>
+
+        {/* Hero Social Links */}
+        <div className="flex justify-center gap-4">
+          <a 
+            href="https://github.com/Dilaja" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="p-3 bg-[#1e1e1e]/80 text-[#E0E0E0] hover:text-[#00E5FF] hover:border-[#00E5FF] border border-[#2c2c2c] rounded-xl transition-all backdrop-blur-sm"
+            aria-label="GitHub"
+          >
+            <FaGithub className="w-5 h-5" />
+          </a>
+          <a 
+            href="https://linkedin.com" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="p-3 bg-[#1e1e1e]/80 text-[#E0E0E0] hover:text-[#00E5FF] hover:border-[#00E5FF] border border-[#2c2c2c] rounded-xl transition-all backdrop-blur-sm"
+            aria-label="LinkedIn"
+          >
+            <FaLinkedin className="w-5 h-5" />
+          </a>
+          <a 
+            href="https://youtube.com" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="p-3 bg-[#1e1e1e]/80 text-[#E0E0E0] hover:text-[#00E5FF] hover:border-[#00E5FF] border border-[#2c2c2c] rounded-xl transition-all backdrop-blur-sm"
+            aria-label="YouTube"
+          >
+            <FaYoutube className="w-5 h-5" />
+          </a>
+          <a 
+            href="https://instagram.com" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="p-3 bg-[#1e1e1e]/80 text-[#E0E0E0] hover:text-[#00E5FF] hover:border-[#00E5FF] border border-[#2c2c2c] rounded-xl transition-all backdrop-blur-sm"
+            aria-label="Instagram"
+          >
+            <FaInstagram className="w-5 h-5" />
+          </a>
         </div>
+
       </div>
     </section>
   );
