@@ -3,15 +3,31 @@ import { Mail, Phone, MapPin, Send, CheckCircle2 } from 'lucide-react';
 import { FaGithub, FaLinkedin, FaYoutube, FaInstagram } from 'react-icons/fa';
 
 export default function Contact({ t }) {
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState('idle'); // 'idle' | 'submitting' | 'success' | 'error'
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Insert your form submission logic (e.g., Formspree, EmailJS, or backend API) here
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 5000);
-    setFormData({ name: '', email: '', message: '' });
+    setStatus('submitting');
+
+    try {
+      // Using Formspree endpoint (Replace 'your-form-id' with your actual Formspree ID, e.g. 'xmwkqppd')
+      const response = await fetch('https://formspree.io/f/xoeqkwky', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setStatus('success');
+        setFormData({ name: '', email: '', message: '' });
+        setTimeout(() => setStatus('idle'), 6000);
+      } else {
+        setStatus('error');
+      }
+    } catch (error) {
+      setStatus('error');
+    }
   };
 
   const handleChange = (e) => {
@@ -126,8 +142,8 @@ export default function Contact({ t }) {
 
           {/* Column 2: Contact Form */}
           <div className="bg-[#1e1e1e] p-8 rounded-2xl border border-[#2c2c2c] shadow-xl relative">
-            {submitted ? (
-              <div className="absolute inset-0 bg-[#1e1e1e] rounded-2xl flex flex-col items-center justify-center p-6 text-center animate-fadeIn">
+            {status === 'success' ? (
+              <div className="absolute inset-0 bg-[#1e1e1e] rounded-2xl flex flex-col items-center justify-center p-6 text-center animate-fadeIn z-10">
                 <CheckCircle2 className="w-16 h-16 text-[#00E5FF] mb-4" />
                 <h3 className="text-2xl font-bold text-[#E0E0E0] mb-2">
                   {t?.messageSentTitle || "Message Sent!"}
@@ -184,11 +200,19 @@ export default function Contact({ t }) {
                 ></textarea>
               </div>
 
+              {status === 'error' && (
+                <p className="text-red-400 text-sm">
+                  Failed to send message. Please try emailing directly at dilipajantha@gmail.com.
+                </p>
+              )}
+
               <button 
                 type="submit"
-                className="w-full flex items-center justify-center gap-2 bg-[#00E5FF] text-[#121212] font-semibold py-3 px-6 rounded-lg hover:bg-[#00c4dc] transition-colors cursor-pointer shadow-lg shadow-cyan-950/20"
+                disabled={status === 'submitting'}
+                className="w-full flex items-center justify-center gap-2 bg-[#00E5FF] text-[#121212] font-semibold py-3 px-6 rounded-lg hover:bg-[#00c4dc] transition-colors cursor-pointer shadow-lg shadow-cyan-950/20 disabled:opacity-50"
               >
-                <Send className="w-4 h-4" /> {t?.sendButton || "Send Message"}
+                <Send className="w-4 h-4" /> 
+                {status === 'submitting' ? 'Sending...' : (t?.sendButton || "Send Message")}
               </button>
             </form>
           </div>
